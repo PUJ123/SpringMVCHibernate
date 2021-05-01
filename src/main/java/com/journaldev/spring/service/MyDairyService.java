@@ -1,6 +1,5 @@
 package com.journaldev.spring.service;
 
-
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -12,29 +11,29 @@ import com.journaldev.spring.dao.MyDairyDao;
 import com.journaldev.spring.dao.PersonDAO;
 import com.journaldev.spring.model.User;
 
-
 @Service
 public class MyDairyService {
-	
+
 	@Autowired
 	public MyDairyDao myDairyDao;
 
+	/*
+	 * public void setMyDairyDao(MyDairyDao MyDairyDao) { this.myDairyDao =
+	 * MyDairyDao; }
+	 */
 
-	/*public void setMyDairyDao(MyDairyDao MyDairyDao) {
-		this.myDairyDao = MyDairyDao;
-	}*/
-	
 	@Transactional
 	public boolean checkUser(User user) {
 		Boolean result = false;
 		try {
 			List<User> list = myDairyDao.checkUser(user);
-			User dbUser = list.get(0);
-			if(dbUser.getEmail().equals(user.getEmail())&& dbUser.getPswd().equals(user.getPswd())) {
-				result= true;
+			long count = list.stream().filter(
+					dbUser -> dbUser.getEmail().equals(user.getEmail()) && dbUser.getPswd().equals(user.getPswd()))
+					.count();
+			if (count == 1) {
+				result=true;
 			}
-		}catch(Exception e)
-		{
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return result;

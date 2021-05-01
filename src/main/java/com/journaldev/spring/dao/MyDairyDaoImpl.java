@@ -14,6 +14,7 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.journaldev.spring.model.Person;
 import com.journaldev.spring.model.User;
 
 
@@ -29,22 +30,18 @@ public class MyDairyDaoImpl implements MyDairyDao {
 		this.sessionFactory = sf;
 	}
     
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<User>  checkUser(User user) {
-		String query="SELECT * FROM USER WHERE EMAIL='"+user.getEmail()+"'";
-		List<User> myUser = new ArrayList();
+		List<User> userList = new ArrayList();
 		try {
-			// myUser = this.sessionFactory.getCurrentSession().createQuery(query).list();
-			//Query query= this.sessionFactory.getCurrentSession().createQuery(query).list();
-			/* Criteria crit = sessionFactory.getCurrentSession().createCriteria(User.class);
-			  crit.add(Restrictions.eq("Email", user.getEmail())); //assuming Employee entity has "email" field
-			  return  crit.list();*/
+			Session session = this.sessionFactory.getCurrentSession();
+			userList = session.createQuery("from User").list();
 			
-			return this.sessionFactory.getCurrentSession().createSQLQuery(query).list();
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
-		return myUser;
+		return userList;
 	}
 	
 	
