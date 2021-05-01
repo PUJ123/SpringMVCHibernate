@@ -1,0 +1,9 @@
+<city>
+	<person>
+		<id>1</id>
+		<name>Hari</name>
+		<age>25</age>
+		<phone>123456789</phone>
+		<address>123456789555</address>
+	</person>
+</city>
