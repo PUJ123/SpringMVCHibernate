@@ -1,4 +1,0 @@
-#foreach($mapKey in $userList.keySet())
-Key : $mapKey  -  Value : $!{userList.get($mapKey )}
-
-#end
