@@ -3,15 +3,16 @@ package com.journaldev.spring.model;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity(name = "User")
 public class User {
-	
+
 	@Id
 	@Column(name = "ID")
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
 	@Column(name = "EMAIL")
@@ -19,6 +20,9 @@ public class User {
 
 	@Column(name = "PSWD")
 	private String pswd;
+
+	@Column(name = "USER_NAME")
+	private String userName;
 
 	public Integer getId() {
 		return id;
@@ -42,6 +46,14 @@ public class User {
 
 	public void setPswd(String pswd) {
 		this.pswd = pswd;
+	}
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 
 }

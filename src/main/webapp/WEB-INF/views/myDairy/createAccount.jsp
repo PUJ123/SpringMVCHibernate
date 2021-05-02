@@ -1,5 +1,7 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <title>Login</title>
 <meta charset="utf-8">
@@ -18,45 +20,53 @@
 	<div class="container ">
 		<div class="row">
 			<div class="col-sm-4 mx-auto pt-5">
-			<div class="text-center text-warning">
-						<p>${msg}</p>
-					</div>
+				<div class="text-center text-warning">
+					<p>${msg}</p>
+				</div>
 				<div class="card">
 					<div class="container pt-4">
-						<h4 class="text-center pt-3">Login</h4>
-						<form method="post" action="login" commandName="user">
+						<h4 class="text-center pt-3">Create Accout</h4>
+						<form method="post" action="createAccount" commandName="user">
+
+							<div class="form-group">
+								<label for="userName">UserName:</label> <input type="username"
+									class="form-control" id="userName" placeholder="Enter username"
+									name="userName" required>
+							</div>
 							<div class="form-group">
 								<label for="email">Email:</label> <input type="email"
 									class="form-control" id="email" placeholder="Enter email"
-									name="email">
+									name="email" required>
 							</div>
 							<div class="form-group">
 								<label for="pwd">Password:</label> <input type="password"
 									class="form-control" id="pwd" placeholder="Enter password"
-									name="pswd">
+									name="pswd" required>
 							</div>
-							<div class="form-group form-check">
-								<label class="form-check-label"> <input
-									class="form-check-input" type="checkbox" name="remember">
-									Remember me
-								</label>
-							</div>
-							<div class="form-group form-check mx-auto">
-								<button type="submit" name="submit" class="btn btn-primary">Submit</button>
-							</div>
+							
 
-							<div class="form-group form-check text-center">
-								<a href="${pageContext.request.contextPath}/createAccount">
-									<button type="button" class="btn">Create an Account</button>
-								</a>
+							<div style="width: 400px;">
+								<div style="float: left; width: 130px">
+									<button type="submit" name="submit" class="btn btn-primary">Submit</button>
+								</div>
+
+
+								<div style="float: right; width: 225px">
+									<a href="${pageContext.request.contextPath}/">
+										<button type="button" name="submit" class="btn btn-primary">Login</button>
+									</a>
+								</div>
 							</div>
-						</form>
+							
+							
+							
 					</div>
-					<div class="card-body"></div>
+					</form>
 				</div>
+				<div class="card-body"></div>
 			</div>
 		</div>
 	</div>
-
+	</div>
 </body>
 </html>

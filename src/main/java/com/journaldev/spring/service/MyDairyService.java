@@ -38,4 +38,32 @@ public class MyDairyService {
 		}
 		return result;
 	}
+
+	@Transactional
+	public void createUser(User user) {
+		Boolean result=false;
+		try {
+			myDairyDao.createUser(user);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+	}
+
+	@Transactional
+	public Boolean isUserExist(User user) {
+		
+		Boolean result = true;;
+		try {
+			List<User> userList =myDairyDao.isUserExist(user);
+			if(userList.isEmpty()) {
+				result = false;
+			}
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+		return result;
+	}
 }
